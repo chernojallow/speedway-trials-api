@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Car {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name= "nickname")
@@ -20,6 +19,8 @@ public class Car {
     private String status;
     private int top_speed;
 
+    public Car() {
+    }
 
     public Car(Long id, String nickname, String model, LocalDateTime year, String driver, String status, int top_speed) {
         this.id = id;
