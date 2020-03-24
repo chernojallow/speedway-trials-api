@@ -1,7 +1,5 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
-import jdk.vm.ci.meta.Local;
-
 import java.time.LocalDate;
 
 public class Driver {
