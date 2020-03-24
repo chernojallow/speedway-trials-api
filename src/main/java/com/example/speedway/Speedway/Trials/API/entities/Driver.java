@@ -37,4 +37,18 @@ public class Driver {
         this.wins = wins;
         this.losses = losses;
     }
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", age=" + age +
+                ", birthDate=" + birthDate +
+                ", car=" + car +
+                ", wins=" + wins +
+                ", losses=" + losses +
+                '}';
+    }
 }
