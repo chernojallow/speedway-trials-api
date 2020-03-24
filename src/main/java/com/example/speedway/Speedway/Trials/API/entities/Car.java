@@ -1,6 +1,7 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,14 +11,16 @@ public class Car {
     private Long id;
     @Column(name= "nickname")
     private String nickname;
- 
+    @NotBlank(message="model is required.")
     private String model;
-
+    @NotBlank(message="year is required.")
     private LocalDateTime year;
-
+    @NotBlank(message="driver is required.")
     private String driver;
-
+    @NotBlank(message="status is required.")
     private String status;
+    @NotBlank(message="top_speed is required.")
+    private String email;
     private int top_speed;
 
 
