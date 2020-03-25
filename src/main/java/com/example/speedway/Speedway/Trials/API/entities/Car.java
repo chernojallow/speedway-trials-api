@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "cars")
 public class Car {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +15,7 @@ public class Car {
     @NotBlank(message="model is required.")
     private String model;
     @NotBlank(message="year is required.")
-    private LocalDateTime year;
+    private String year;
     @NotBlank(message="driver is required.")
     private String driver;
     @NotBlank(message="status is required.")
@@ -24,7 +25,9 @@ public class Car {
     private int top_speed;
 
 
-    public Car(Long id, String nickname, String model, LocalDateTime year, String driver, String status, int top_speed) {
+    public Car (){};
+
+    public Car(Long id, String nickname, String model, String year, String driver, String status, int top_speed) {
         this.id = id;
         this.nickname = nickname;
         this.model = model;
@@ -33,6 +36,19 @@ public class Car {
         this.status = status;
         this.top_speed = top_speed;
     }
+
+
+    public Car(String nickname, String model, String year, String driver, String status, int top_speed) {
+        this.id = id;
+        this.nickname = nickname;
+        this.model = model;
+        this.year = year;
+        this.driver = driver;
+        this.status = status;
+        this.top_speed = top_speed;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -58,11 +74,11 @@ public class Car {
         this.model = model;
     }
 
-    public LocalDateTime getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(LocalDateTime year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

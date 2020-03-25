@@ -1,21 +1,32 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
+@Entity
 public class Race {
 
-    
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @NotBlank(message="category is required.")
     private String category;
+    @NotBlank(message="localDateTime is required.")
     private LocalDateTime date;
+    @NotBlank(message="bestTime is required.")
     private LocalDateTime bestTime;
+    @NotBlank(message="winner is required.")
     private String winner;
+    @NotBlank(message="participants is required.")
     private String participants;
 
 
 
-    public Race(Long id, String name, String category, LocalDateTime date, LocalDateTime bestTime, String winner, String participants) {
+    public Race(Long id, String name, String category, LocalDateTime date,
+                LocalDateTime bestTime, String winner, String participants) {
+
         this.id = id;
         this.name = name;
         this.category = category;

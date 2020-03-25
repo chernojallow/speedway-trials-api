@@ -38,7 +38,7 @@ public class Driver {
         this.wins = wins;
         this.losses = losses;
     }
-<<<<<<< Updated upstream
+
     @Override
     public String toString() {
         return "Driver{" +
@@ -53,7 +53,7 @@ public class Driver {
                 ", losses=" + losses +
                 '}';
     }
-=======
+
     public String getFirstName() {
         return firstName;
     }
@@ -126,5 +126,5 @@ public class Driver {
         this.id = id;
     }
 
->>>>>>> Stashed changes
+
 }
