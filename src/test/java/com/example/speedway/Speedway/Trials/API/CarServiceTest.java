@@ -1,7 +1,7 @@
 package com.example.speedway.Speedway.Trials.API;
 
 
-import com.example.speedway.Speedway.Trials.API.controllers.CarController;
+import com.example.speedway.Speedway.Trials.API.controllers.CarService;
 import com.example.speedway.Speedway.Trials.API.entities.Car;
 import com.example.speedway.Speedway.Trials.API.repository.CarRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,16 +19,16 @@ public class CarServiceTest {
     @Autowired
     CarRepository carRepository;
 
-    CarController carController;
+    CarService carController;
 
     @BeforeEach
     void setUp(){
-        carController = new CarController(carRepository);
+        carController = new CarService(carRepository);
 
     }
     @Test
     void getAllCars(){
-        Car car = new Car(1L, "myHonda", "nissan" , "2019", "Cherno","PENDING", 80);
+        Car car = new Car( "myHonda", "nissan" , "2019", "Cherno","PENDING", 80);
         System.out.println(car);
         carController.save(car);
 

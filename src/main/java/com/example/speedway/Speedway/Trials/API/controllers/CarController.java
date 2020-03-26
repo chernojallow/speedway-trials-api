@@ -1,38 +1,37 @@
 package com.example.speedway.Speedway.Trials.API.controllers;
 
+
 import com.example.speedway.Speedway.Trials.API.entities.Car;
-import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.speedway.Speedway.Trials.API.repository.CarRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@Service
+
+@RestController
+@RequestMapping("/api/cars")
 public class CarController {
 
-    CarRepository carRepository;
+    CarService carService;
 
-    public CarController(CarRepository carRepository) {
+    @Autowired
+    public CarController (CarService carService){
+        this.carService = carService;
+    }
 
-        this.carRepository = carRepository;
+    @PostMapping
+    ResponseEntity<Car> createCar(Car car) {
+     return ResponseEntity.ok(carService.createCar(car));
     }
 
 
-    public List<Car> getAllCars() {
-        return this.carRepository.findAll();
-    }
-
-
-    Car createCar(Car c) {
-
-        return carRepository.save(c);
+    @GetMapping
+    ResponseEntity<List<Car>> getAllOrders(){
+        return ResponseEntity.ok(carService.getAllCars());
 
     }
 
 
-    public void save(Car car) {
-    }
 }
-
-

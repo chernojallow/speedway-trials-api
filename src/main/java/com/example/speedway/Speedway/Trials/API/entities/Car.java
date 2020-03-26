@@ -9,22 +9,27 @@ import java.time.LocalDateTime;
 public class Car {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name= "nickname")
+//    @Column(name= "nickname")
+    @Column
     private String nickname;
-    @NotBlank(message="model is required.")
+//    @NotBlank(message="model is required.")
+    @Column
     private String model;
-    @NotBlank(message="year is required.")
+//    @NotBlank(message="year is required.")
+    @Column
     private String year;
-    @NotBlank(message="driver is required.")
+//    @NotBlank(message="driver is required.")
+    @Column
     private String driver;
-    @NotBlank(message="status is required.")
+//    @NotBlank(message="status is required.")
+    @Column
     private String status;
-    @NotBlank(message="top_speed is required.")
+//    @NotBlank(message="top_speed is required.")
+    @Column
     private String email;
+    @Column
     private int top_speed;
 
-    public Car() {
-    }
 
     public Car (){};
 
