@@ -1,25 +1,48 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name="drivers")
 public class Driver {
-    public Long id;
-    public String firstName;
-    public String lastName;
-    public String nickName;
-    public Integer age;
-    public LocalDate birthDate;
-    public Car car;
-    public Integer wins;
-    public Integer losses;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="firstName")
+    private String firstName;
+
+    @Column(name="lastName")
+    private String lastName;
+
+    @Column(name="age")
+    private int age;
+    
+    @Column(name="birthDate")
+    private LocalDate birthDate;
+    
+    @Column(name="nickName")
+    private String nickName;
+
+    @Column(name="carId")
+    private Car car;
+
+    @Column(name="wins")
+    private int wins;
+
+    @Column(name="losses")
+    private int losses;
     // Stretch Goals
     //   public RaceRecord raceRecord;
     //   public Sponsor sponsor;
     public Driver(){}
     // New Driver
-    public Driver(String firstName, String lastName, String nickName, Integer age, LocalDate birthDate, Car car) {
+    public Driver(String firstName, String lastName, String nickName, int age, LocalDate birthDate, Car car) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nickName = nickName;
         this.age = age;
         this.birthDate = birthDate;
         this.car = car;
@@ -27,9 +50,10 @@ public class Driver {
         this.losses = 0;
     }
     // Adding in Driver Information Manually
-    public Driver(String firstName, String lastName, String nickName, Integer age, LocalDate birthDate, Car car, Integer wins, Integer losses) {
+    public Driver(String firstName, String lastName, String nickName, int age, LocalDate birthDate, Car car, int wins, int losses) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nickName = nickName;
         this.age = age;
         this.birthDate = birthDate;
         this.car = car;
@@ -76,11 +100,11 @@ public class Driver {
         this.nickName = nickName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -100,19 +124,19 @@ public class Driver {
         this.car = car;
     }
 
-    public Integer getWins() {
+    public int getWins() {
         return wins;
     }
 
-    public void setWins(Integer wins) {
+    public void setWins(int wins) {
         this.wins = wins;
     }
 
-    public Integer getLosses() {
+    public int getLosses() {
         return losses;
     }
 
-    public void setLosses(Integer losses) {
+    public void setLosses(int losses) {
         this.losses = losses;
     }
 
