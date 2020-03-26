@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "cars")
 public class Car {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name= "nickname")
@@ -24,6 +23,8 @@ public class Car {
     private String email;
     private int top_speed;
 
+    public Car() {
+    }
 
     public Car (){};
 

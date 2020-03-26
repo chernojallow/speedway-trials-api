@@ -1,7 +1,5 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
-import jdk.vm.ci.meta.Local;
-
 import java.time.LocalDate;
 
 public class Driver {
@@ -53,7 +51,10 @@ public class Driver {
                 ", losses=" + losses +
                 '}';
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6433666129b40cdd4503b8fa94328fc84d0b43bd
     public String getFirstName() {
         return firstName;
     }
@@ -125,6 +126,9 @@ public class Driver {
     public void setId(Long id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6433666129b40cdd4503b8fa94328fc84d0b43bd
 }
