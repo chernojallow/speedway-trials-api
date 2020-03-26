@@ -2,6 +2,7 @@ package com.example.speedway.Speedway.Trials.API;
 
 
 import com.example.speedway.Speedway.Trials.API.controllers.CarService;
+import com.example.speedway.Speedway.Trials.API.entities.Car;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -34,14 +35,14 @@ public class CarControllerTest {
     void getAllCars() throws Exception{
 
     //Setup
-    int expected = 1;
-    when(carController.getAllCars()).thenReturn(new ArrayList<>());
-
+    ArrayList<Car> cars = new ArrayList<>();
+    Car car = new Car();
+    cars.add(car);
+    when(carController.getAllCars()).thenReturn(cars);
     //Exercise
     mockMvc.perform(get("/api/cars").accept(MediaType.APPLICATION_JSON))
-            .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$", hasSize(expected)));
+            .andExpect(jsonPath("$", hasSize(cars.size())));
 
 }
 

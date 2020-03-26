@@ -26,21 +26,21 @@ public class CarServiceTest {
         carController = new CarService(carRepository);
 
     }
-    @Test
-    void getAllCars(){
-        Car car = new Car( "myHonda", "nissan" , "2019", "Cherno","PENDING", 80);
-        System.out.println(car);
-        carController.save(car);
-
-        int expected = 1;
-        // Exercise
-        int actual = carController.getAllCars().size();
-
-        // Assert
-        assertEquals(expected, actual);
-        // Teardown
-
-
-    }
+//    @Test
+//    void getAllCars(){
+//        Car car = new Car( "myHonda", "nissan" , "2019", "Cherno","PENDING", 80);
+//        System.out.println(car);
+//        carController.save(car);
+//
+//        int expected = 1;
+//        // Exercise
+//        int actual = carController.getAllCars().size();
+//
+//        // Assert
+//        assertEquals(expected, actual);
+//        // Teardown
+//
+//
+//    }
 
 }

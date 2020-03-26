@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/api/cars")
 public class CarController {
 
-    CarService carService;
+    final CarService carService;
 
     @Autowired
     public CarController (CarService carService){
@@ -22,7 +22,7 @@ public class CarController {
     }
 
     @PostMapping
-    ResponseEntity<Car> createCar(Car car) {
+    ResponseEntity<Car> createCar(@RequestBody Car car) {
      return ResponseEntity.ok(carService.createCar(car));
     }
 
