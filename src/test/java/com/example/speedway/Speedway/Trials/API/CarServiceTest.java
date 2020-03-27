@@ -1,11 +1,9 @@
 package com.example.speedway.Speedway.Trials.API;
 
 
-import com.example.speedway.Speedway.Trials.API.controllers.CarService;
-import com.example.speedway.Speedway.Trials.API.entities.Car;
+import com.example.speedway.Speedway.Trials.API.services.CarService;
 import com.example.speedway.Speedway.Trials.API.repository.CarRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -26,8 +26,6 @@ public class Car {
     private String status;
 //    @NotBlank(message="top_speed is required.")
     @Column
-    private String email;
-    @Column
     private int top_speed;
 
 
