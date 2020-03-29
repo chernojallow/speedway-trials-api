@@ -14,9 +14,9 @@ import java.util.Optional;
 public class CarService {
     @Autowired
     CarRepository carRepository;
-    public CarService() {
 
-    }
+    public CarService() {}
+
     public CarService(CarRepository carRepository) {
 
         this.carRepository = carRepository;
@@ -33,6 +33,7 @@ public class CarService {
         return carRepository.save(car);
 
     }
+
     public Car getCarById(Long id) {
         Optional<Car> car = carRepository.findById(id);
         // if car is NOT FOUND
@@ -42,6 +43,31 @@ public class CarService {
         // we use getter method since its an optional
         return car.get();
     }
+
+
+//    public boolean deleteCar(Long id) {
+//        Car car = getCarById(id);
+//
+//        if (car != null) {
+//            carRepository.remove(car);
+//            return true;
+//
+//        } else {
+//            return false;
+//        }
+//
+//    }
+
+
+
+
+
+
+
 }
+
+
+
+
 
 

@@ -1,8 +1,12 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Race {
@@ -13,19 +17,20 @@ public class Race {
     private String name;
     @NotBlank(message="category is required.")
     private String category;
-    @NotBlank(message="localDateTime is required.")
-    private LocalDateTime date;
+    @NotBlank(message="category is required.")
+    private LocalDate date;
     @NotBlank(message="bestTime is required.")
-    private LocalDateTime bestTime;
+    private LocalTime bestTime;
     @NotBlank(message="winner is required.")
     private String winner;
     @NotBlank(message="participants is required.")
     private String participants;
 
 
+    public Race(){};
 
-    public Race(Long id, String name, String category, LocalDateTime date,
-                LocalDateTime bestTime, String winner, String participants) {
+    public Race(Long id, String name, String category, LocalDate date,
+                LocalTime bestTime, String winner, String participants) {
 
         this.id = id;
         this.name = name;
@@ -35,6 +40,21 @@ public class Race {
         this.winner = winner;
         this.participants = participants;
     }
+
+
+    public Race(String name, String category, LocalDate date,
+                LocalTime bestTime, String winner, String participants) {
+
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.date = date;
+        this.bestTime = bestTime;
+        this.winner = winner;
+        this.participants = participants;
+    }
+
+
 
 
     public Long getId() {
@@ -61,19 +81,19 @@ public class Race {
         this.category = category;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public LocalDateTime getBestTime() {
+    public LocalTime getBestTime() {
         return bestTime;
     }
 
-    public void setBestTime(LocalDateTime bestTime) {
+    public void setBestTime(LocalTime   bestTime) {
         this.bestTime = bestTime;
     }
 

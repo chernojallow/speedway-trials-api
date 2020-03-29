@@ -1,7 +1,9 @@
 package com.example.speedway.Speedway.Trials.API.controllers;
 
+import com.example.speedway.Speedway.Trials.API.repository.CarRepository;
 import com.example.speedway.Speedway.Trials.API.services.CarService;
 import com.example.speedway.Speedway.Trials.API.entities.Car;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -29,6 +31,12 @@ public class CarControllerTest {
 
     @MockBean
     CarService carController;
+
+
+//    @MockBean
+//    CarRepository carRepository;
+
+
     ObjectMapper mapper = new ObjectMapper();
     final String baseUrl = "/api/cars";
     @Test
@@ -36,11 +44,13 @@ public class CarControllerTest {
         Car car = new Car("car", "car", "car", "car", "car", 100);
         String newCarJson = mapper.writeValueAsString(car);
         when(carController.createCar(ArgumentMatchers.any(Car.class))).thenReturn(car);
+
         mockMvc.perform(post(baseUrl).content(newCarJson).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(car.getId()))
                 .andExpect(jsonPath("$.nickname").value(car.getNickname()));
     }
+
 
     @Test
     void getAllCars() throws Exception{
@@ -56,6 +66,7 @@ public class CarControllerTest {
                 .andExpect(jsonPath("$", hasSize(cars.size())));
 
     }
+
     @Test
     void getCarsById() throws Exception {
         // Create Car with ID
@@ -71,6 +82,22 @@ public class CarControllerTest {
                 .andExpect(status().isOk());
     }
 
+
+//    @Test
+//    void deleteCar() throws Exception {
+//
+//
+//        Car car = new Car(1l,"car", "car", "car", "car", "car", 100);
+//
+//        String newCarJson = mapper.writeValueAsString(car);
+//
+//        when(carController.deleteCar(car.getId())).thenReturn(car);
+//
+//        String idUrl = baseUrl + "/" + car.getId();
+//        mockMvc.perform(get(idUrl).accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk());
+//
+//    }
 
 
 }
