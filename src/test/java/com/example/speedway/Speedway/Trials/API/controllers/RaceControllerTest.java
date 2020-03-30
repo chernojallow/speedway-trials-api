@@ -2,9 +2,7 @@ package com.example.speedway.Speedway.Trials.API.controllers;
 
 
 import com.example.speedway.Speedway.Trials.API.entities.Race;
-import com.example.speedway.Speedway.Trials.API.repository.CarRepository;
-import com.example.speedway.Speedway.Trials.API.services.CarService;
-import com.example.speedway.Speedway.Trials.API.entities.Car;
+
 import com.example.speedway.Speedway.Trials.API.services.RaceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -65,8 +63,18 @@ public class RaceControllerTest {
               .andExpect(jsonPath("$.id").value(race.getId()))
             .andExpect(jsonPath("$.name").value(race.getName()));
 
-
     }
 
+    @Test
+    void getAllRace() throws Exception {
+        ArrayList<Race> races = new ArrayList<>();
+
+      final String baseUrl = "/api/races";
+      when(raceService.getAllRace()).thenReturn(new ArrayList<>());
+      mockMVc.perform(get(baseUrl).accept(MediaType.APPLICATION_JSON))
+              .andExpect(status().isOk())
+              .andExpect(jsonPath("$",hasSize(races.size())));
+
+    }
 
 }
