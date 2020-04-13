@@ -1,12 +1,6 @@
 package com.example.speedway.Speedway.Trials.API.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 public class Race {
@@ -15,41 +9,41 @@ public class Race {
     private Long id;
     @Column(name = "name")
     private String name;
-    @NotBlank(message="category is required.")
+    @Column
     private String category;
-    @NotBlank(message="category is required.")
-    private LocalDate date;
-    @NotBlank(message="bestTime is required.")
-    private LocalTime bestTime;
-    @NotBlank(message="winner is required.")
+    @Column
+    private String date;
+    @Column
+    private String best_time;
+    @Column
     private String winner;
-    @NotBlank(message="participants is required.")
+    @Column
     private String participants;
 
 
     public Race(){};
 
-    public Race(Long id, String name, String category, LocalDate date,
-                LocalTime bestTime, String winner, String participants) {
+    public Race(Long id, String name, String category, String date,
+                String bestTime, String winner, String participants) {
 
         this.id = id;
         this.name = name;
         this.category = category;
         this.date = date;
-        this.bestTime = bestTime;
+        this.best_time = bestTime;
         this.winner = winner;
         this.participants = participants;
     }
 
 
-    public Race(String name, String category, LocalDate date,
-                LocalTime bestTime, String winner, String participants) {
+    public Race(String name, String category, String date,
+                String bestTime, String winner, String participants) {
 
         this.id = id;
         this.name = name;
         this.category = category;
         this.date = date;
-        this.bestTime = bestTime;
+        this.best_time = bestTime;
         this.winner = winner;
         this.participants = participants;
     }
@@ -81,20 +75,20 @@ public class Race {
         this.category = category;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalTime getBestTime() {
-        return bestTime;
+    public String getBest_time() {
+        return best_time;
     }
 
-    public void setBestTime(LocalTime   bestTime) {
-        this.bestTime = bestTime;
+    public void setBest_time(String  bestTime) {
+        this.best_time = bestTime;
     }
 
     public String getWinner() {
@@ -120,7 +114,7 @@ public class Race {
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", date=" + date +
-                ", bestTime=" + bestTime +
+                ", bestTime=" + best_time +
                 ", winner='" + winner + '\'' +
                 ", participants='" + participants + '\'' +
                 '}';

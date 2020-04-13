@@ -39,21 +39,10 @@ public class RaceControllerTest {
     ObjectMapper mapper = new ObjectMapper();
     final String baseUrl = "/api/races";
 
-
     @Test
     void createRaceTest() throws Exception {
 
-      //parse string to LocalDate
-        String time1 = "2019-03-27";
-        LocalDate date = LocalDate.parse(time1);
-
-
-       //parse string to LocalTime
-        String string = "10:10";
-        LocalTime time= LocalTime.parse(string);
-
-
-        Race race = new Race("nissan", "stock_car", date,time,"cherno","lamin");
+        Race race = new Race("nissan", "stock_car", "10-05-2020","10:10","cherno","lamin");
         System.out.println(race);
         String newRaceJson = mapper.writeValueAsString(race);
         when(raceService.createRace(ArgumentMatchers.any(Race.class))).thenReturn(race);

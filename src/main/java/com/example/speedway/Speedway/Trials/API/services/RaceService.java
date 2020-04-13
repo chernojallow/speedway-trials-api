@@ -10,18 +10,15 @@ import java.util.List;
 @Service
 public class RaceService {
 
-    @Autowired
+
     RaceRepository raceRepository;
-
-
-    public RaceService(){}
 
     public RaceService( RaceRepository raceRepository){
         this.raceRepository = raceRepository;
     }
 
-
     public Race createRace(Race race){
+
         return raceRepository.save(race);
     }
 

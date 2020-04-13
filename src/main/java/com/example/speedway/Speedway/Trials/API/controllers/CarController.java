@@ -17,7 +17,7 @@ public class CarController {
 
     final CarService carService;
 
-    CarRepository carRepository;
+
 
     @Autowired
     public CarController (CarService carService){
