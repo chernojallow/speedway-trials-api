@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
-@AutoConfigureMockMvc
 public class RaceServiceTest {
 
     @Autowired
@@ -57,5 +56,6 @@ public class RaceServiceTest {
         assertTrue(race.containsAll(races));
 
     }
+
 
 }

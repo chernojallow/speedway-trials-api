@@ -21,6 +21,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -65,5 +67,50 @@ public class RaceControllerTest {
               .andExpect(jsonPath("$",hasSize(races.size())));
 
     }
+
+    @Test
+    void getRaceById() throws Exception {
+
+        //Setup
+        Race race = new Race();
+        race.setId(1L);
+
+        //Exercise
+        String json = mapper.writeValueAsString(race);
+        when(raceService.getRaceById(race.getId())).thenReturn(race);
+
+        //Assert
+        String idUrl = baseUrl + "/" +race.getId();
+        mockMVc.perform(get(idUrl).accept(MediaType.APPLICATION_JSON))
+         .andExpect(status().isOk());
+
+    }
+
+    @Test
+    void updateRace() throws Exception {
+        // Setup
+        Race expectedRace = new Race();
+              expectedRace.setId(1L);
+              String json = mapper.writeValueAsString(expectedRace);
+              //Exercise
+        when(raceService.updateRace(anyLong(), any(Race.class))).thenReturn(expectedRace);
+
+        //Assert
+        mockMVc.perform(put(baseUrl + "/update/2" ).content(json).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(expectedRace.getId()));
+
+     }
+
+    @Test
+    void deleteRaceById() throws Exception {
+        //Setup
+        when(raceService.deleteById(ArgumentMatchers.any(Long.class))).thenReturn(true);
+
+        //Exercise
+        mockMVc.perform(get(baseUrl+ "/delete//1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").doesNotExist());
+     }
 
 }

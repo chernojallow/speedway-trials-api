@@ -27,4 +27,28 @@ public class RaceController {
         return ResponseEntity.ok(raceService.getAllRace());
     }
 
+
+    @GetMapping("/{id}")
+    ResponseEntity<Race> getRaceById(Long id){
+        return ResponseEntity.ok(raceService.getRaceById(id));
+    }
+
+    @PutMapping("/update/{updateId}")
+    ResponseEntity<Race> updateRace(@PathVariable Long updateId, @RequestBody Race race){
+
+        return ResponseEntity.ok(raceService.updateRace(updateId, race));
+    }
+
+    @GetMapping("/delete/{id}")
+    ResponseEntity<Object> deleteRaceById( @PathVariable Long id){
+
+        boolean success = raceService.deleteById(id);
+        if(success){
+            return ResponseEntity.ok(null);
+        }else{
+            return ResponseEntity.badRequest().body("Race with id" + id + "was not found");
+        }
+    }
+
+
 }

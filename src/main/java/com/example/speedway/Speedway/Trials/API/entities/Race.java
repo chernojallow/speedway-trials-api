@@ -119,4 +119,16 @@ public class Race {
                 ", participants='" + participants + '\'' +
                 '}';
     }
+
+
+    public void update(Race newRace) {
+        if(newRace.getId()!=0)this.setId(newRace.getId());
+        if(newRace.getName()!=null)this.setName(newRace.getName());
+        if(newRace.getCategory()!=null)this.setCategory(newRace.getCategory());
+        if(newRace.getDate()!=null)this.setDate(newRace.getDate());
+        if(newRace.getBest_time()!=null)this.setBest_time(newRace.getBest_time());
+        if(newRace.getWinner()!=null)this.setWinner(newRace.getWinner());
+        if(newRace.getParticipants()!=null)this.setParticipants(newRace.getParticipants());
+
+    }
 }

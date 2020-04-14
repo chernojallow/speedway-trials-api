@@ -44,28 +44,6 @@ public class CarService {
         return car.get();
     }
 
-
-
-
-//    public boolean deleteCar(Long id) {
-//        Car car = getCarById(id);
-//
-//        if (car != null) {
-//            carRepository.remove(car);
-//            return true;
-//
-//        } else {
-//            return false;
-//        }
-//
-//    }
-
-
-
-
-
-
-
 }
 
 

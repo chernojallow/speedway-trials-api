@@ -30,7 +30,7 @@ public class CarControllerTest {
     MockMvc mockMvc;
 
     @MockBean
-    CarService carController;
+    CarService carService;
 
 
 //    @MockBean
@@ -43,7 +43,7 @@ public class CarControllerTest {
     void createCar() throws Exception {
         Car car = new Car("car", "car", "car", "car", "car", 100);
         String newCarJson = mapper.writeValueAsString(car);
-        when(carController.createCar(ArgumentMatchers.any(Car.class))).thenReturn(car);
+        when(carService.createCar(ArgumentMatchers.any(Car.class))).thenReturn(car);
 
         mockMvc.perform(post(baseUrl).content(newCarJson).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -59,7 +59,7 @@ public class CarControllerTest {
         ArrayList<Car> cars = new ArrayList<>();
         Car car = new Car();
         cars.add(car);
-        when(carController.getAllCars()).thenReturn(cars);
+        when(carService.getAllCars()).thenReturn(cars);
         //Exercise
         mockMvc.perform(get(baseUrl).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -74,7 +74,7 @@ public class CarControllerTest {
         car.setId(1L);
         String newCarJson = mapper.writeValueAsString(car);
         // Mockito Mock Return
-        when(carController.getCarById(car.getId())).thenReturn(car);
+        when(carService.getCarById(car.getId())).thenReturn(car);
         // Appropriate Rest URL
         String idUrl = baseUrl + "/" + car.getId();
         // Mock Controller to Service Call
@@ -83,23 +83,5 @@ public class CarControllerTest {
 
 
     }
-
-
-//    @Test
-//    void deleteCar() throws Exception {
-//
-//
-//        Car car = new Car(1l,"car", "car", "car", "car", "car", 100);
-//
-//        String newCarJson = mapper.writeValueAsString(car);
-//
-//        when(carController.deleteCar(car.getId())).thenReturn(car);
-//
-//        String idUrl = baseUrl + "/" + car.getId();
-//        mockMvc.perform(get(idUrl).accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk());
-//
-//    }
-
 
 }
